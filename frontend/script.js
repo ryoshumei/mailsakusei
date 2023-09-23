@@ -23,6 +23,12 @@ $(document).ready(function() {
 $('#generate').click(function(event) {
     //stop navigating to the page given in the form action
     event.preventDefault();
+    // #exampleTextarea cant be empty
+    if ($('#exampleTextarea').val() == '') {
+        $('#resultOutput').html('Please enter a text');
+        $('#resultOutputDiv').removeClass('d-none');
+        return;
+    }
     //get the data from the form field both recipient,signature and exampleTextarea
     const recipient = $('#recipient').val();
     const signature = $('#signature').val();
@@ -35,26 +41,34 @@ $('#generate').click(function(event) {
     }
     //convert the object to a JSON string
     const json = JSON.stringify(data);
-
+    // clear #resultOutput
+    $('#resultOutput').val('');
     //show the user that the data is being processed using a loading gif image
-    $('#resultOutput').html('Processing please wait...');
-    //remove d-none class from the #resultOutputDiv
+    $('#resultOutput').val('Processing please wait...');
+    //remove d-none class from the #resultOutputDiv if exists
     $('#resultOutputDiv').removeClass('d-none');
     //ajax call, a function that takes an object as a json and sends it to the server
     $.ajax({
         type: 'POST',
-        url: '/api',
-        data: { text: json },
+        url: '/api/generate',
+        data: json,
         contentType: 'application/json',
         dataType: 'json',
+        //accepts the response from the server
         success: function(data) {
             console.log('success');
             console.log(JSON.stringify(data));
-            $('#resultOutput').html(data);
+            const output = data.result;
+            //show the result in the resultOutput field
+            $('#resultOutput').val(output);
+            console.log('success');
+
+
+
         }
         //if the ajax call fails, show the user an error message
     }).fail(function(jqXHR, textStatus, errorThrown) {
         console.log('error');
-        $('#resultOutput').html('Error: ' + errorThrown);
+        $('#resultOutput').html('Error: ' + + jqXHR.responseText + ' ' + textStatus + ' ' + errorThrown);
     });
 });

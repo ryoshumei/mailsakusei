@@ -18,11 +18,34 @@ $(document).ready(function() {
     });
 
 });
+// make a function that recover the #copyButton class to btn-secondary and remove btn-danger if exists and change the text to Copy
+function recoverCopyButton() {
+    $('#copyButton').removeClass('btn-danger');
+    $('#copyButton').addClass('btn-secondary');
+    $('#copyButton').text('Copy');
+}
+
+// copy resultOutput to clipboard
+$('#copyButton').on('click', function(){
+    var copyText = document.getElementById("resultOutput");
+    navigator.clipboard.writeText(copyText.value).then(function() {
+        //change the text of the button to Copied!
+        $('#copyButton').text('Copied!');
+    }).catch(function(err) {
+        // If there is an error change button class to btn-danger
+        $('#copyButton').removeClass('btn-success');
+        $('#copyButton').addClass('btn-danger');
+        console.error('copy error: ', err);
+    });
+});
+
 
 //when the user clicks on the button, send the data to the server
 $('#generate').click(function(event) {
     //stop navigating to the page given in the form action
     event.preventDefault();
+    // call the function recoverCopyButton
+    recoverCopyButton();
     // #exampleTextarea cant be empty
     if ($('#exampleTextarea').val() == '') {
         $('#resultOutput').html('Please enter a text');

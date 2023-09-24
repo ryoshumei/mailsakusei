@@ -11,10 +11,14 @@
 </head>
 
 <body class="bg-secondary-subtle">
-<header class="bg-primary text-white text-center py-2 fs-4">
-    <img src="emai_generator_jp_icon60x60.png" alt="My Icon" class="me-2" style="height: 60px;">
-    日本語メール作成 AI (powered by openai gpt3.5)
+<header class="bg-primary text-white text-center py-2 rounded d-flex flex-column align-items-center">
+    <div class="d-flex align-items-center py-0 mb-0 fs-5">
+        <img src="emai_generator_jp_icon60x60.png" alt="My Icon" class="me-2" style="height: 40px;">
+        日本語メール作成 AI
+    </div>
+    <span class="mt-0 text-white py-0 fs-6">powered by openai gpt3.5</span>
 </header>
+
 <div class="container bg-secondary-subtle">
     <!-- Content here -->
     <div class="row justify-content-center mt-5 mb-1">
@@ -46,11 +50,12 @@
             </div>
         </form>
     </div>
-    <div class="row justify-content-center my-1 d-none"id="resultOutputDiv">
+    <div class="row justify-content-center my-1 d-none" id="resultOutputDiv">
         <div class="col-md-6">
-            <div class="mb-3">
+            <div class="mb-3 position-relative">
                 <label for="resultOutput" class="form-label">結果の表示</label>
                 <textarea class="form-control" id="resultOutput" rows="12" readonly></textarea>
+                <div id="copyButton" class="btn btn-secondary position-absolute end-0 me-2 fs-6" style="top: -7px;">Copy</div>
             </div>
         </div>
     </div>

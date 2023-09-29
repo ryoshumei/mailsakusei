@@ -16,10 +16,14 @@ def generate_email():
     data = request.json
 
     # system_content
-    sys_content = "以下の内容(署名,宛名,要件)に基づいてメールの本文を作成してください。'拝啓'と'敬具'は不要.署名と宛名が不明な場合は分かりやすく'「署名」'と「'宛名」'と書く。"
+    sys_content = "以下の内容(署名,宛名,要件)に基づいてメールの本文を作成してください。'拝啓'と'敬具'は不要.署名と宛名が不明な場合は分かりやすく'「署名」'と「'宛名」'と書く。メールの最後に宛名は要らない"
 
     # user_content
-    user_content = "宛名:" + data['recipient'] + "\n" + "署名:" + data['signature'] + "\n" + "要件:" + data['text']
+    try:
+        user_content = "宛名:" + data['recipient'] + "\n" + "署名:" + data['signature'] + "\n" + "要件:" + data['text']
+    except:
+        abort(400)
+
 
     # send to openai api gpt3.5turbo and get response
     response = chatgpt(sys_content, user_content)

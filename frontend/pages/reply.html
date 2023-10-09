@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>日本語メール返信AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7305640770836252"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-secondary-subtle">
+<header class="bg-primary text-white text-center py-2 rounded d-flex flex-column align-items-center">
+    <div class="d-flex align-items-center py-0 mb-0 fs-5">
+        <img src="../icons/emai_generator_jp_icon60x60.png" alt="My Icon" class="me-2" style="height: 40px;">
+        日本語メール返信 AI
+    </div>
+    <span class="mt-0 text-white py-0 fs-6">powered by openai gpt3.5</span>
+</header>
+
+<div class="container bg-secondary-subtle">
+    <!-- Content here -->
+    <div class="row justify-content-center mt-5 mb-1">
+        <form class="col-md-6">
+            <div class="mb-3">
+                <label for="recipient" class="form-label">受信したメール</label>
+                <textarea type="text" class="form-control" id="recipient" rows="5" placeholder="受信したメールを入力してください"></textarea>
+                <div class="d-flex justify-content-between">
+                    <div id="recCharCountWarning" class="d-none text-danger">文字数が多すぎます</div>
+                    <div class="ms-auto">
+                        <span id="recCharCount">0 文字</span>
+                        <span id="recCharMax">/500 文字まで</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleTextarea" class="form-label">返信要件</label>
+                <textarea class="form-control" id="exampleTextarea" rows="5"
+                          placeholder="こちらに要件を入力してください"></textarea>
+                <!--id charCount and charMax in one line on the right-->
+                <div class="d-flex justify-content-between">
+                    <div id="charCountWarning" class="d-none text-danger">文字数が多すぎます</div>
+                    <div class="ms-auto">
+                        <span id="charCount">0 文字</span>
+                        <span id="charMax">/500 文字まで</span>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <a href="pages/privacy_policy.html" class="text-primary">プライバシーポリシー</a>
+                </div>
+                <button type="submit" class="btn btn-primary" id="generate">作成</button>
+            </div>
+        </form>
+    </div>
+    <div class="row justify-content-center my-1 d-none" id="resultOutputDiv">
+        <div class="col-md-6">
+            <div class="mb-3 position-relative">
+                <label for="resultOutput" class="form-label">結果の表示</label>
+                <textarea class="form-control" id="resultOutput" rows="12" readonly></textarea>
+                <div id="copyButton" class="btn btn-secondary position-absolute end-0 me-2 fs-6" style="top: -7px;">Copy</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- jQuery -->
+<script
+        src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<script src="js/script.js"></script>
+</body>
+
+</html>

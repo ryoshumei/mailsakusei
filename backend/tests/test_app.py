@@ -24,6 +24,7 @@ def test_api_generate_valid_input(client):
     }
 
     response = client.post('/api/generate', data=json.dumps(data), content_type='application/json')
+    print (response.json)
     assert response.status_code == 200
     assert "result" in response.json
 

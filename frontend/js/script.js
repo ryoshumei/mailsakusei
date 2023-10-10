@@ -30,7 +30,8 @@ $('#morePoliteButton').click(function (event) {
     const text = $('#resultOutput').val();
     // make a object with the data
     const data = {
-        text: text
+        text: text,
+        lang: getSelectValue()
     }
     //convert the object to a JSON string
     const json = JSON.stringify(data);
@@ -68,7 +69,8 @@ $('#addEmojiButton').click(function (event) {
     const text = $('#resultOutput').val();
     // make a object with the data
     const data = {
-        text: text
+        text: text,
+        lang: getSelectValue()
     }
     //convert the object to a JSON string
     const json = JSON.stringify(data);
@@ -117,7 +119,7 @@ $('#copyButton').on('click', function(){
 });
 
 
-//when the user clicks on the button, send the data to the server
+//when the user clicks on the 'generate button', send the data to the server
 $('#generate').click(function(event) {
     //stop navigating to the page given in the form action
     event.preventDefault();
@@ -133,11 +135,14 @@ $('#generate').click(function(event) {
     const recipient = $('#recipient').val();
     const signature = $('#signature').val();
     const text = $('#exampleTextarea').val();
+    const lang = getSelectValue();
+
     // make a object with the data
     const data = {
         recipient: recipient,
         signature: signature,
-        text: text
+        text: text,
+        lang: lang
     }
     //convert the object to a JSON string
     const json = JSON.stringify(data);
@@ -172,3 +177,10 @@ $('#generate').click(function(event) {
         $('#resultOutput').html('Error: ' + + jqXHR.responseText + ' ' + textStatus + ' ' + errorThrown);
     });
 });
+
+// a function that gets the value from the select, use jquery to get the value id is langSelection
+
+function getSelectValue() {
+    var selectedValue = $("#langSelection").val();
+    return selectedValue;
+}

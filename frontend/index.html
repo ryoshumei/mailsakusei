@@ -46,7 +46,17 @@
                 <div class="d-flex justify-content-end">
                     <a href="pages/privacy_policy.html" class="text-primary">プライバシーポリシー</a>
                 </div>
-                <button type="submit" class="btn btn-primary" id="generate">作成</button>
+                <div class="d-flex justify-content-start">
+                    <button type="submit" class="btn btn-primary me-3" id="generate">作成</button>
+<!--                    bootstrap5 selection-->
+                    <select class="form-select w-25" aria-label="Output language select" id="langSelection">
+                        <option value="1" selected>日本語</option>
+                        <option value="2">English</option>
+                        <option value="3">简体中文</option>
+                        <option value="4">繁體中文</option>
+                    </select>
+                </div>
+
             </div>
         </form>
     </div>

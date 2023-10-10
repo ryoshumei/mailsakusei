@@ -20,7 +20,8 @@ def test_api_generate_valid_input(client):
     data = {
         'recipient': 'John Doe',
         'signature': 'Jane Smith',
-        'text': 'Please attend the meeting tomorrow.'
+        'text': 'Please attend the meeting tomorrow.',
+        'lang': 1
     }
 
     response = client.post('/api/generate', data=json.dumps(data), content_type='application/json')
